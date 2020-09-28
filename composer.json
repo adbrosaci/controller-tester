@@ -1,0 +1,46 @@
+{
+  "name": "adbros/controller-tester",
+  "description": "Simple Apitte Controllers testing.",
+  "keywords": [
+    "nette",
+    "apitte",
+    "tester"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": ">=7.2",
+    "apitte/core": "^0.6",
+    "nette/tester": "^2.0"
+  },
+  "require-dev": {
+    "nepada/phpstan-nette-tester": "^0.3.0",
+    "ninjify/coding-standard": "^0.10",
+    "php-parallel-lint/php-console-highlighter": "^0.5",
+    "php-parallel-lint/php-parallel-lint": "^1.2",
+    "phpstan/phpstan": "^0.12.46",
+    "phpstan/phpstan-deprecation-rules": "^0.12.5",
+    "phpstan/phpstan-nette": "^0.12.9",
+    "phpstan/phpstan-strict-rules": "^0.12.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Adbros\\Tester\\ControllerTester\\": "src/"
+    }
+  },
+  "scripts": {
+    "cs": [
+      "parallel-lint -e php,phpt --blame src",
+      "phpcs --standard=.ruleset.xml"
+    ],
+    "cs-fix": [
+      "phpcbf --standard=.ruleset.xml"
+    ],
+    "phpstan": [
+      "phpstan analyse -c .phpstan.neon"
+    ],
+    "qa": [
+      "@cs", "@phpstan"
+    ]
+  }
+}
