@@ -44,3 +44,12 @@ public function testPostHelloWorld(): void
     $result->assertStatusCode(200);
 }
 ```
+
+## TestControllerRequest API
+TestControllerRequest is **immutable** object.
+
+### `withParameters(array $parameters)`
+### `withMethod(string $method)`
+### `withRawBody(string $body)`
+### `withJsonBody(array $body)`
+### `withHeaders(array $headers)`
