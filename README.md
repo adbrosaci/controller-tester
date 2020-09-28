@@ -1,6 +1,14 @@
 # ControllerTester
 Simple Apitte Controllers testing.
 
+---
+
+[![Build Status](https://img.shields.io/travis/com/adbrosaci/controller-tester.svg?style=flat-square)](https://travis-ci.com/adbrosaci/controller-tester)
+[![Licence](https://img.shields.io/packagist/l/adbros/controller-tester.svg?style=flat-square)](https://packagist.org/packages/adbros/controller-tester)
+[![Downloads this Month](https://img.shields.io/packagist/dm/adbros/controller-tester.svg?style=flat-square)](https://packagist.org/packages/adbros/google)
+[![Downloads total](https://img.shields.io/packagist/dt/adbros/controller-tester.svg?style=flat-square)](https://packagist.org/packages/adbros/controller-tester)
+[![Latest stable](https://img.shields.io/packagist/v/adbros/controller-tester.svg?style=flat-square)](https://packagist.org/packages/adbros/controller-tester) 
+
 ## Installation 
 ```shell
 composer require adbros/controller-tester --dev
