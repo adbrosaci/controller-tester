@@ -83,7 +83,7 @@ class TestControllerRequest
 	public function withHeaders(array $headers): TestControllerRequest
 	{
 		$request = clone $this;
-		$request->headers = $headers;
+		$request->headers = array_change_key_case($headers, CASE_LOWER) + $request->headers;
 
 		return $request;
 	}
