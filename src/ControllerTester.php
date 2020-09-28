@@ -5,22 +5,17 @@ namespace Adbros\Tester\ControllerTester;
 use Apitte\Core\Dispatcher\IDispatcher;
 use Apitte\Core\Http\ApiRequest;
 use Apitte\Core\Http\ApiResponse;
-use Apitte\Core\Router\IRouter;
 use Contributte\Psr7\Psr7Response;
 use Contributte\Psr7\Psr7ServerRequest;
 
 class ControllerTester
 {
 
-	/** @var IRouter */
-	private $router;
-
 	/** @var IDispatcher */
 	private $dispatcher;
 
-	public function __construct(IRouter $router, IDispatcher $dispatcher)
+	public function __construct(IDispatcher $dispatcher)
 	{
-		$this->router = $router;
 		$this->dispatcher = $dispatcher;
 	}
 
