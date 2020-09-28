@@ -13,6 +13,9 @@ class TestControllerRequest
 	/**	@var string */
 	private $uri;
 
+	/**	@var mixed[] */
+	private $parameters;
+
 	/** @var string */
 	private $method = 'GET';
 
@@ -32,6 +35,14 @@ class TestControllerRequest
 		return $this->uri;
 	}
 
+	/**
+	 * @return mixed[]
+	 */
+	public function getParameters(): array
+	{
+		return $this->parameters;
+	}
+
 	public function getMethod(): string
 	{
 		return $this->method;
@@ -48,6 +59,17 @@ class TestControllerRequest
 	public function getHeaders(): array
 	{
 		return $this->headers;
+	}
+
+	/**
+	 * @param mixed[] $parameters
+	 */
+	public function withParameters(array $parameters): TestControllerRequest
+	{
+		$request = clone $this;
+		$request->parameters = $parameters + $request->parameters;
+
+		return $request;
 	}
 
 	public function withMethod(string $method): TestControllerRequest
