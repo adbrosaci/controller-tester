@@ -8,7 +8,6 @@ use Apitte\Core\Http\ApiResponse;
 use Apitte\Core\Router\IRouter;
 use Contributte\Psr7\Psr7Response;
 use Contributte\Psr7\Psr7ServerRequest;
-use Tester\Assert;
 
 class ControllerTester
 {
@@ -34,13 +33,6 @@ class ControllerTester
 	{
 		$request = $this->createApiRequest($testControllerRequest);
 		$response = new ApiResponse(new Psr7Response());
-
-		$request = $this->router->match($request);
-
-		if ($request === null) {
-			Assert::fail('Request not matched.');
-		}
-
 		$response = $this->dispatcher->dispatch($request, $response);
 
 		return new TestControllerResult($response);

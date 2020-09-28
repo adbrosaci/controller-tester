@@ -19,7 +19,7 @@ class TestControllerRequest
 	/** @var string|null */
 	private $rawBody;
 
-	/** @var string[] */
+	/** @var mixed[] */
 	private $headers = [];
 
 	public function __construct(string $uri)
@@ -43,7 +43,7 @@ class TestControllerRequest
 	}
 
 	/**
-	 * @return string[]
+	 * @return mixed[]
 	 */
 	public function getHeaders(): array
 	{
@@ -78,7 +78,7 @@ class TestControllerRequest
 	}
 
 	/**
-	 * @param string[] $headers
+	 * @param mixed[] $headers
 	 */
 	public function withHeaders(array $headers): TestControllerRequest
 	{
