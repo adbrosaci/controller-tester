@@ -25,13 +25,14 @@ public function testPostHelloWorld(): void
         ->withJsonBody([
             'foo' => 'bar',
         ]);
-    $response = $controllerTester->execute($request);
+    $result = $controllerTester->execute($request);
 
-    Assert::same([
+    $result->assertJson([
         'status' => 'ok',
         'payload' => [
             'foo' => 'bar',
         ],
-    ], $response->getResponse()->getJsonBody());
+    ]);
+    $result->assertStatusCode(200);
 }
 ```
