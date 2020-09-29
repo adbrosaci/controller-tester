@@ -7,8 +7,6 @@ use Apitte\Core\Http\ApiRequest;
 use Apitte\Core\Http\ApiResponse;
 use Contributte\Psr7\Psr7Response;
 use Contributte\Psr7\Psr7ServerRequest;
-use Contributte\Psr7\Psr7Uri;
-use function GuzzleHttp\Psr7\build_query;
 
 class ControllerTester
 {
@@ -37,13 +35,12 @@ class ControllerTester
 
 	protected function createApiRequest(TestControllerRequest $testControllerRequest): ApiRequest
 	{
-		return new ApiRequest(new Psr7ServerRequest(
+		return new ApiRequest((new Psr7ServerRequest(
 			$testControllerRequest->getMethod(),
-			(new Psr7Uri($testControllerRequest->getUri()))
-				->withQuery(build_query($testControllerRequest->getParameters())),
+			$testControllerRequest->getUri(),
 			$testControllerRequest->getHeaders(),
 			$testControllerRequest->getRawBody()
-		));
+		))->withQueryParams($testControllerRequest->getParameters()));
 	}
 
 }

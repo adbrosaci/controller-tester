@@ -14,7 +14,7 @@ class TestControllerRequest
 	private $uri;
 
 	/**	@var mixed[] */
-	private $parameters;
+	private $parameters = [];
 
 	/** @var string */
 	private $method = 'GET';
