@@ -20,6 +20,21 @@ jobs:
       name: "PHPStan"
       script:
         - composer phpstan
+    -
+      name: "Test"
+      script:
+        - composer test
+
+    - stage: Test Coverage
+      if: branch = master AND type = push
+      script:
+        - composer coverage
+      after_script:
+        - wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.2.0/php-coveralls.phar
+        - php php-coveralls.phar --verbose --config .coveralls.yml
+
+  allow_failures:
+    - stage: Test Coverage
 
 sudo: false
 

@@ -1,7 +1,10 @@
 <?xml version="1.0"?>
 <ruleset name="ControllerTester">
     <file>src</file>
-    <arg name="extensions" value="php,phpt"/>
+    <file>tests</file>
+	<exclude-pattern>tests/tmp</exclude-pattern>
+
+	<arg name="extensions" value="php,phpt"/>
     <arg name="colors"/>
     <arg value="nsp"/>
     <!-- Contributte Coding Standard -->
@@ -10,7 +13,9 @@
         <properties>
             <property name="rootNamespaces" type="array">
                 <element key="src" value="Adbros\Tester\ControllerTester"/>
+                <element key="tests" value="Adbros\Tester\ControllerTester\Tests"/>
             </property>
+            <property name="extensions" type="array" value="php,phpt"/>
         </properties>
     </rule>
 </ruleset>

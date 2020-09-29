@@ -21,16 +21,22 @@
     "phpstan/phpstan": "^0.12.46",
     "phpstan/phpstan-deprecation-rules": "^0.12.5",
     "phpstan/phpstan-nette": "^0.12.9",
-    "phpstan/phpstan-strict-rules": "^0.12.5"
+    "phpstan/phpstan-strict-rules": "^0.12.5",
+    "ninjify/nunjuck": "^0.3.0"
   },
   "autoload": {
     "psr-4": {
       "Adbros\\Tester\\ControllerTester\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Adbros\\Tester\\ControllerTester\\Tests\\": "tests/"
+    }
+  },
   "scripts": {
     "cs": [
-      "parallel-lint -e php,phpt --blame src",
+      "parallel-lint -e php,phpt --blame src tests --exclude tests/tmp",
       "phpcs --standard=.ruleset.xml"
     ],
     "cs-fix": [
@@ -39,8 +45,14 @@
     "phpstan": [
       "phpstan analyse -c .phpstan.neon"
     ],
+    "test": [
+      "tester -C tests"
+    ],
+    "coverage": [
+      "tester -C -p phpdbg --coverage coverage.xml --coverage-src src tests"
+    ],
     "qa": [
-      "@cs", "@phpstan"
+      "@cs", "@phpstan", "@test"
     ]
   }
 }
