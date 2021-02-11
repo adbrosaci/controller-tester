@@ -21,9 +21,9 @@ class TestControllerResult
 		return $this->response;
 	}
 
-	public function assertStatusCode(int $expected): self
+	public function assertStatusCode(int $expected, ?string $description = null): self
 	{
-		Assert::same($expected, $this->getResponse()->getStatusCode());
+		Assert::same($expected, $this->getResponse()->getStatusCode(), $description);
 
 		return $this;
 	}
@@ -31,9 +31,9 @@ class TestControllerResult
 	/**
 	 * @param mixed[] $expected
 	 */
-	public function assertJson(array $expected): self
+	public function assertJson(array $expected, ?string $description = null): self
 	{
-		Assert::same($expected, $this->getResponse()->getJsonBody());
+		Assert::same($expected, $this->getResponse()->getJsonBody(), $description);
 
 		return $this;
 	}
