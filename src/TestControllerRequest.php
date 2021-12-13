@@ -25,6 +25,12 @@ class TestControllerRequest
 	/** @var mixed[] */
 	private $headers = [];
 
+	/** @var string */
+	private $protocolVersion = '1.1';
+
+	/** @var mixed[] */
+	private $serverParams = [];
+
 	public function __construct(string $uri)
 	{
 		$this->uri = $uri;
@@ -59,6 +65,19 @@ class TestControllerRequest
 	public function getHeaders(): array
 	{
 		return $this->headers;
+	}
+
+	public function getProtocolVersion(): string
+	{
+		return $this->protocolVersion;
+	}
+
+	/**
+	 * @return mixed[]
+	 */
+	public function getServerParams(): array
+	{
+		return $this->serverParams;
 	}
 
 	/**
@@ -106,6 +125,25 @@ class TestControllerRequest
 	{
 		$request = clone $this;
 		$request->headers = array_change_key_case($headers, CASE_LOWER) + $request->headers;
+
+		return $request;
+	}
+
+	public function withProtocolVersion(string $protocolVersion): TestControllerRequest
+	{
+		$request = clone $this;
+		$request->protocolVersion = $protocolVersion;
+
+		return $request;
+	}
+
+	/**
+	 * @param mixed[] $serverParams
+	 */
+	public function withServerParams(array $serverParams): TestControllerRequest
+	{
+		$request = clone $this;
+		$request->serverParams = $serverParams;
 
 		return $request;
 	}

@@ -56,7 +56,9 @@ class ControllerTester
 			$testControllerRequest->getMethod(),
 			$testControllerRequest->getUri(),
 			$testControllerRequest->getHeaders(),
-			$testControllerRequest->getRawBody()
+			$testControllerRequest->getRawBody(),
+			$testControllerRequest->getProtocolVersion(),
+			$testControllerRequest->getServerParams()
 		))->withQueryParams($testControllerRequest->getParameters()));
 	}
 

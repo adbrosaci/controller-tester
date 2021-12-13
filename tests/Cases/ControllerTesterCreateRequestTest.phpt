@@ -34,6 +34,14 @@ class ControllerTesterCreateRequestTest extends TestCase
 	/** @var mixed[] */
 	private $headers = [];
 
+	/** @var string */
+	private $protocolVersion = '2.0';
+
+	/** @var mixed[] */
+	private $serverParams = [
+		'REMOTE_ADDR' => '127.0.0.1',
+	];
+
 	public function setUp(): void
 	{
 		parent::setUp();
@@ -60,6 +68,8 @@ class ControllerTesterCreateRequestTest extends TestCase
 		Assert::same('GET', $request->getMethod());
 		Assert::null($request->getRawBody());
 		Assert::same([], $request->getHeaders());
+		Assert::same('1.1', $request->getProtocolVersion());
+		Assert::same([], $request->getServerParams());
 	}
 
 	public function testRequestParameters(): void
@@ -72,6 +82,8 @@ class ControllerTesterCreateRequestTest extends TestCase
 		Assert::same('GET', $request->getMethod());
 		Assert::null($request->getRawBody());
 		Assert::same([], $request->getHeaders());
+		Assert::same('1.1', $request->getProtocolVersion());
+		Assert::same([], $request->getServerParams());
 	}
 
 	public function testRequestMethod(): void
@@ -84,6 +96,8 @@ class ControllerTesterCreateRequestTest extends TestCase
 		Assert::same($this->method, $request->getMethod());
 		Assert::null($request->getRawBody());
 		Assert::same([], $request->getHeaders());
+		Assert::same('1.1', $request->getProtocolVersion());
+		Assert::same([], $request->getServerParams());
 	}
 
 	public function testRequestRawBody(): void
@@ -96,6 +110,8 @@ class ControllerTesterCreateRequestTest extends TestCase
 		Assert::same('GET', $request->getMethod());
 		Assert::same($this->rawBody, $request->getRawBody());
 		Assert::same([], $request->getHeaders());
+		Assert::same('1.1', $request->getProtocolVersion());
+		Assert::same([], $request->getServerParams());
 	}
 
 	public function testRequestJsonBody(): void
@@ -111,6 +127,8 @@ class ControllerTesterCreateRequestTest extends TestCase
 		Assert::same('POST', $request->getMethod());
 		Assert::same('{"bar":"foo"}', $request->getRawBody());
 		Assert::same([], $request->getHeaders());
+		Assert::same('1.1', $request->getProtocolVersion());
+		Assert::same([], $request->getServerParams());
 	}
 
 	public function testRequestHeaders(): void
@@ -123,6 +141,36 @@ class ControllerTesterCreateRequestTest extends TestCase
 		Assert::same('GET', $request->getMethod());
 		Assert::null($request->getRawBody());
 		Assert::same($this->headers, $request->getHeaders());
+		Assert::same('1.1', $request->getProtocolVersion());
+		Assert::same([], $request->getServerParams());
+	}
+
+	public function testRequestProtocolVersion(): void
+	{
+		$request = $this->controllerTester->createRequest($this->uri)
+			->withProtocolVersion($this->protocolVersion);
+
+		Assert::same($this->uri, $request->getUri());
+		Assert::same([], $request->getParameters());
+		Assert::same('GET', $request->getMethod());
+		Assert::null($request->getRawBody());
+		Assert::same([], $request->getHeaders());
+		Assert::same($this->protocolVersion, $request->getProtocolVersion());
+		Assert::same([], $request->getServerParams());
+	}
+
+	public function testRequestServerParams(): void
+	{
+		$request = $this->controllerTester->createRequest($this->uri)
+			->withServerParams($this->serverParams);
+
+		Assert::same($this->uri, $request->getUri());
+		Assert::same([], $request->getParameters());
+		Assert::same('GET', $request->getMethod());
+		Assert::null($request->getRawBody());
+		Assert::same([], $request->getHeaders());
+		Assert::same('1.1', $request->getProtocolVersion());
+		Assert::same($this->serverParams, $request->getServerParams());
 	}
 
 	public function testRequestAll(): void
@@ -131,13 +179,17 @@ class ControllerTesterCreateRequestTest extends TestCase
 			->withParameters($this->parameters)
 			->withMethod($this->method)
 			->withRawBody($this->rawBody)
-			->withHeaders($this->headers);
+			->withHeaders($this->headers)
+			->withProtocolVersion($this->protocolVersion)
+			->withServerParams($this->serverParams);
 
 		Assert::same($this->uri, $request->getUri());
 		Assert::same($this->parameters, $request->getParameters());
 		Assert::same($this->method, $request->getMethod());
 		Assert::same($this->rawBody, $request->getRawBody());
 		Assert::same($this->headers, $request->getHeaders());
+		Assert::same($this->protocolVersion, $request->getProtocolVersion());
+		Assert::same($this->serverParams, $request->getServerParams());
 	}
 
 }
