@@ -143,7 +143,7 @@ class TestControllerRequest
 	public function withServerParams(array $serverParams): TestControllerRequest
 	{
 		$request = clone $this;
-		$request->serverParams = $serverParams;
+		$request->serverParams = array_change_key_case($serverParams, CASE_UPPER) + $request->serverParams;
 
 		return $request;
 	}
