@@ -3,14 +3,8 @@ parameters:
 	paths:
 		- src
 		- tests
-	excludes_analyse:
+	excludePaths:
 			- tests/tmp/*
 	fileExtensions:
 		- php
 		- phpt
-includes:
-	- vendor/nepada/phpstan-nette-tester/extension.neon
-	- vendor/phpstan/phpstan-deprecation-rules/rules.neon
-	- vendor/phpstan/phpstan-nette/extension.neon
-	- vendor/phpstan/phpstan-nette/rules.neon
-	- vendor/phpstan/phpstan-strict-rules/rules.neon
