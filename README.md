@@ -50,7 +50,7 @@ public function testPostHelloWorld(): void
 TestControllerRequest is **immutable** object.
 
 ### `withParameters(array $parameters)`
-Add query parameters.
+Add QUERY parameters.
 
 ### `withMethod(string $method)`
 Set HTTP method. Default method is `GET`.
@@ -63,3 +63,9 @@ Set request JSON body.
 
 ### `withHeaders(array $headers)`
 Add HTTP headers.
+
+### `withProtocolVersion(string $protocolVersion)`
+Set HTTP protocol version. Default protocol version is `1.1`.
+
+### `withServerParams(array $serverParams)`
+Add SERVER parameters.
