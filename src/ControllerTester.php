@@ -52,14 +52,20 @@ class ControllerTester
 
 	protected function createApiRequest(TestControllerRequest $testControllerRequest): ApiRequest
 	{
-		return new ApiRequest((new Psr7ServerRequest(
+		$request = (new Psr7ServerRequest(
 			$testControllerRequest->getMethod(),
 			$testControllerRequest->getUri(),
 			$testControllerRequest->getHeaders(),
 			$testControllerRequest->getRawBody(),
 			$testControllerRequest->getProtocolVersion(),
 			$testControllerRequest->getServerParams()
-		))->withQueryParams($testControllerRequest->getParameters()));
+		))->withQueryParams($testControllerRequest->getParameters());
+
+		if (count($testControllerRequest->getFiles()) > 0) {
+			$request = $request->withUploadedFiles($testControllerRequest->getFiles());
+		}
+
+		return new ApiRequest($request);
 	}
 
 }

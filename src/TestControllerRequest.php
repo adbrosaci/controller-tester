@@ -2,6 +2,7 @@
 
 namespace Adbros\Tester\ControllerTester;
 
+use Contributte\Psr7\Psr7UploadedFile;
 use Nette\SmartObject;
 use Nette\Utils\Json;
 
@@ -30,6 +31,9 @@ class TestControllerRequest
 
 	/** @var mixed[] */
 	private $serverParams = [];
+
+	/** @var array<string, Psr7UploadedFile> */
+	private $files = [];
 
 	public function __construct(string $uri)
 	{
@@ -78,6 +82,14 @@ class TestControllerRequest
 	public function getServerParams(): array
 	{
 		return $this->serverParams;
+	}
+
+	/**
+	 * @return Psr7UploadedFile[]
+	 */
+	public function getFiles(): array
+	{
+		return $this->files;
 	}
 
 	/**
@@ -144,6 +156,17 @@ class TestControllerRequest
 	{
 		$request = clone $this;
 		$request->serverParams = array_change_key_case($serverParams, CASE_UPPER) + $request->serverParams;
+
+		return $request;
+	}
+
+	public function withFile(string $name, string $filePath): TestControllerRequest
+	{
+		$request  = clone $this;
+		$filesize = is_file($filePath) ? filesize($filePath) : false;
+		$size = $filesize === false ? 0 : $filesize;
+		$status = $filesize === false ? UPLOAD_ERR_NO_FILE : UPLOAD_ERR_OK;
+		$request->files[$name] = new Psr7UploadedFile($filePath, $size, $status);
 
 		return $request;
 	}
