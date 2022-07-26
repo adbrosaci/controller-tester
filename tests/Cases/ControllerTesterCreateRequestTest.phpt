@@ -70,6 +70,7 @@ class ControllerTesterCreateRequestTest extends TestCase
 		Assert::same([], $request->getHeaders());
 		Assert::same('1.1', $request->getProtocolVersion());
 		Assert::same([], $request->getServerParams());
+		Assert::same([], $request->getFiles());
 	}
 
 	public function testRequestParameters(): void
@@ -171,6 +172,22 @@ class ControllerTesterCreateRequestTest extends TestCase
 		Assert::same([], $request->getHeaders());
 		Assert::same('1.1', $request->getProtocolVersion());
 		Assert::same($this->serverParams, $request->getServerParams());
+	}
+
+	public function testRequestFiles(): void
+	{
+		$request = $this->controllerTester->createRequest($this->uri)
+			->withMethod('POST')
+			->withFile('input1', __DIR__ . '/../data/test.txt')
+			->withFile('input2', __DIR__ . '/../data/nofile');
+
+		$files = $request->getFiles();
+
+		Assert::same($this->uri, $request->getUri());
+		Assert::same('POST', $request->getMethod());
+		Assert::count(2, $files);
+		Assert::same(UPLOAD_ERR_OK, $files['input1']->getError());
+		Assert::same(UPLOAD_ERR_NO_FILE, $files['input2']->getError());
 	}
 
 	public function testRequestAll(): void
