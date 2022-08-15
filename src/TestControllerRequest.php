@@ -32,7 +32,7 @@ class TestControllerRequest
 	/** @var mixed[] */
 	private $serverParams = [];
 
-	/** @var Psr7UploadedFile[] */
+	/** @var array<string, Psr7UploadedFile> */
 	private $files = [];
 
 	public function __construct(string $uri)
@@ -160,24 +160,13 @@ class TestControllerRequest
 		return $request;
 	}
 
-	/**
-	 * @param Psr7UploadedFile[] $files
-	 */
-	public function withFiles(array $files): TestControllerRequest
-	{
-		$request = clone $this;
-		$request->files = $files;
-
-		return $request;
-	}
-
 	public function withFile(string $name, string $filePath): TestControllerRequest
 	{
 		$request  = clone $this;
 		$filesize = is_file($filePath) ? filesize($filePath) : false;
 		$size = $filesize === false ? 0 : $filesize;
 		$status = $filesize === false ? UPLOAD_ERR_NO_FILE : UPLOAD_ERR_OK;
-		$request->files = [$name => new Psr7UploadedFile($filePath, $size, $status)] + $this->files;
+		$request->files[$name] = new Psr7UploadedFile($filePath, $size, $status);
 
 		return $request;
 	}
