@@ -61,6 +61,12 @@ Set request RAW body.
 ### `withJsonBody(array $body)`
 Set request JSON body.
 
+### `withParsedBody(array $body)`
+Set POST request with parsed body like x-www-form-urlencoded.
+
+### `withFile(string $name, string $filePath)`
+Add file - Psr7UploadedFile
+
 ### `withHeaders(array $headers)`
 Add HTTP headers.
 

@@ -23,6 +23,9 @@ class TestControllerRequest
 	/** @var string|null */
 	private $rawBody;
 
+	/** @var mixed[]|null */
+	private $parsedBody = null;
+
 	/** @var mixed[] */
 	private $headers = [];
 
@@ -56,6 +59,12 @@ class TestControllerRequest
 	public function getMethod(): string
 	{
 		return $this->method;
+	}
+
+	/** @return mixed[] */
+	public function getParsedBody(): ?array
+	{
+		return $this->parsedBody;
 	}
 
 	public function getRawBody(): ?string
@@ -115,6 +124,17 @@ class TestControllerRequest
 	{
 		$request = clone $this;
 		$request->rawBody = $body;
+
+		return $request;
+	}
+
+	/**
+	 * @param mixed[] $body
+	 */
+	public function withParsedBody(array $body): TestControllerRequest
+	{
+		$request             = clone $this;
+		$request->parsedBody = $body;
 
 		return $request;
 	}
