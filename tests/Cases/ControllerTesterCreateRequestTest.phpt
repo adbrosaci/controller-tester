@@ -132,6 +132,22 @@ class ControllerTesterCreateRequestTest extends TestCase
 		Assert::same([], $request->getServerParams());
 	}
 
+	public function testRequestParsedBody(): void
+	{
+		$data = [
+			'bar' => 'foo',
+		];
+
+		$request = $this->controllerTester->createRequest($this->uri)
+			->withMethod('POST')
+			->withHeaders(['Content-Type' => 'application/x-www-form-urlencoded'])
+			->withParsedBody($data);
+
+		Assert::same('POST', $request->getMethod());
+		Assert::same($data, $request->getParsedBody());
+	}
+
+
 	public function testRequestHeaders(): void
 	{
 		$request = $this->controllerTester->createRequest($this->uri)
