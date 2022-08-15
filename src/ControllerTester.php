@@ -65,6 +65,10 @@ class ControllerTester
 			$request = $request->withUploadedFiles($testControllerRequest->getFiles());
 		}
 
+		if ($testControllerRequest->getParsedBody() !== null) {
+			$request = $request->withParsedBody($testControllerRequest->getParsedBody());
+		}
+
 		return new ApiRequest($request);
 	}
 
