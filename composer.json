@@ -9,7 +9,7 @@
   "type": "library",
   "license": "MIT",
   "require": {
-    "php": ">=7.2",
+    "php": ">=7.3",
     "contributte/apitte": "^0.9",
     "nette/tester": "^2.0"
   },
