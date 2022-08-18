@@ -3,7 +3,7 @@ Simple Apitte Controllers testing.
 
 ---
 
-[![Build Status](https://img.shields.io/travis/com/adbrosaci/controller-tester.svg?style=flat-square)](https://travis-ci.com/adbrosaci/controller-tester)
+[![main workflow](https://github.com/adbrosaci/controller-tester/actions/workflows/main.yml/badge.svg)](https://github.com/adbrosaci/controller-tester/actions/workflows/main.yml)
 [![Code coverage](https://img.shields.io/coveralls/adbrosaci/controller-tester.svg?style=flat-square)](https://coveralls.io/r/adbrosaci/controller-tester)
 [![Licence](https://img.shields.io/packagist/l/adbros/controller-tester.svg?style=flat-square)](https://packagist.org/packages/adbros/controller-tester)
 [![Downloads this Month](https://img.shields.io/packagist/dm/adbros/controller-tester.svg?style=flat-square)](https://packagist.org/packages/adbros/controller-tester)
