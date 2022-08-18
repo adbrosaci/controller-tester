@@ -31,6 +31,7 @@ class ControllerTesterExecuteTest extends TestCase
 		$result = $this->controllerTester->execute($request);
 
 		$result->assertStatusCode(200);
+		$result->assertJson([]);
 	}
 
 }

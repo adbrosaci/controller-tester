@@ -39,11 +39,6 @@ class ControllerTester
 		try {
 			$response = $this->dispatcher->dispatch($request, $response);
 		} catch (Throwable $exception) {
-			if (!class_exists(DispatchError::class)) {
-				// compatibility with version <0.7
-				throw $exception;
-			}
-
 			$response = $this->errorHandler->handle(new DispatchError($exception, $request));
 		}
 

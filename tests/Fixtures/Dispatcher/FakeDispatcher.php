@@ -11,7 +11,7 @@ class FakeDispatcher implements IDispatcher
 
 	public function dispatch(ApiRequest $request, ApiResponse $response): ApiResponse
 	{
-		return $response;
+		return $response->writeJsonBody([]);
 	}
 
 }
