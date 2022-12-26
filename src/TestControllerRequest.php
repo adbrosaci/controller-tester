@@ -26,7 +26,7 @@ class TestControllerRequest
 	/** @var mixed[]|null */
 	private $parsedBody = null;
 
-	/** @var mixed[] */
+	/** @var array<string,array<string>|string> */
 	private $headers = [];
 
 	/** @var string */
@@ -73,7 +73,7 @@ class TestControllerRequest
 	}
 
 	/**
-	 * @return mixed[]
+	 * @return array<string,array<string>|string>
 	 */
 	public function getHeaders(): array
 	{
@@ -151,7 +151,7 @@ class TestControllerRequest
 	}
 
 	/**
-	 * @param mixed[] $headers
+	 * @param array<string,array<string>|string> $headers
 	 */
 	public function withHeaders(array $headers): TestControllerRequest
 	{

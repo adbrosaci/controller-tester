@@ -31,7 +31,7 @@ class ControllerTesterCreateRequestTest extends TestCase
 	/** @var string */
 	private $rawBody;
 
-	/** @var mixed[] */
+	/** @var array<string,array<string>|string> */
 	private $headers = [];
 
 	/** @var string */

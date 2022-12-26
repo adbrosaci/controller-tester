@@ -44,7 +44,7 @@
       "phpcbf --standard=.ruleset.xml"
     ],
     "phpstan": [
-      "phpstan analyse -c .phpstan.neon"
+      "phpstan analyse -c .phpstan.neon --xdebug"
     ],
     "test": [
       "tester -C tests"
