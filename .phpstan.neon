@@ -4,7 +4,11 @@ parameters:
 		- src
 		- tests
 	excludePaths:
-			- tests/tmp/*
+		- tests/tmp/*
 	fileExtensions:
 		- php
 		- phpt
+	ignoreErrors:
+		-
+			message: "#^Call to function method_exists\\(\\) with Contributte\\\\Middlewares\\\\Application\\\\IApplication and 'runWith' will always evaluate to true\\.$#"
+			path: src/ControllerTester.php
