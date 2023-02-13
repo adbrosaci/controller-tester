@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-use Ninjify\Nunjuck\Environment;
+use Contributte\Tester\Environment;
 
 require __DIR__ . '/../vendor/autoload.php';
 

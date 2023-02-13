@@ -14,11 +14,9 @@ use Throwable;
 class ControllerTester
 {
 
-	/** @var IDispatcher */
-	private $dispatcher;
+	private IDispatcher $dispatcher;
 
-	/** @var IErrorHandler */
-	private $errorHandler;
+	private IErrorHandler $errorHandler;
 
 	public function __construct(IDispatcher $dispatcher, IErrorHandler $errorHandler)
 	{

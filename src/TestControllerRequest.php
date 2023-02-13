@@ -11,32 +11,28 @@ class TestControllerRequest
 
 	use SmartObject;
 
-	/**	@var string */
-	private $uri;
+	private string $uri;
 
 	/**	@var mixed[] */
-	private $parameters = [];
+	private array $parameters = [];
 
-	/** @var string */
-	private $method = 'GET';
+	private string $method = 'GET';
 
-	/** @var string|null */
-	private $rawBody;
+	private ?string $rawBody = null;
 
 	/** @var mixed[]|null */
-	private $parsedBody = null;
+	private ?array $parsedBody = null;
 
 	/** @var array<string,array<string>|string> */
-	private $headers = [];
+	private array $headers = [];
 
-	/** @var string */
-	private $protocolVersion = '1.1';
+	private string $protocolVersion = '1.1';
 
 	/** @var mixed[] */
-	private $serverParams = [];
+	private array $serverParams = [];
 
 	/** @var array<string, Psr7UploadedFile> */
-	private $files = [];
+	private array $files = [];
 
 	public function __construct(string $uri)
 	{
@@ -133,7 +129,7 @@ class TestControllerRequest
 	 */
 	public function withParsedBody(array $body): TestControllerRequest
 	{
-		$request             = clone $this;
+		$request = clone $this;
 		$request->parsedBody = $body;
 
 		return $request;
@@ -182,7 +178,7 @@ class TestControllerRequest
 
 	public function withFile(string $name, string $filePath): TestControllerRequest
 	{
-		$request  = clone $this;
+		$request = clone $this;
 		$filesize = is_file($filePath) ? filesize($filePath) : false;
 		$size = $filesize === false ? 0 : $filesize;
 		$status = $filesize === false ? UPLOAD_ERR_NO_FILE : UPLOAD_ERR_OK;

@@ -8,8 +8,7 @@ use Tester\Assert;
 class TestControllerResult
 {
 
-	/** @var ApiResponse */
-	private $response;
+	private ApiResponse $response;
 
 	public function __construct(ApiResponse $response)
 	{

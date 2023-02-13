@@ -8,7 +8,7 @@
     <arg name="colors"/>
     <arg value="nsp"/>
     <!-- Contributte Coding Standard -->
-    <rule ref="./vendor/ninjify/coding-standard/contributte.xml"/>
+    <rule ref="./vendor/contributte/qa/ruleset.xml"/>
     <rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
         <properties>
             <property name="rootNamespaces" type="array">

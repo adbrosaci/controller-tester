@@ -9,21 +9,21 @@
   "type": "library",
   "license": "MIT",
   "require": {
-    "php": ">=7.3",
+    "php": ">=7.4",
     "contributte/apitte": "^0.9 | ^0.10",
     "nette/tester": "^2.0"
   },
   "require-dev": {
+    "contributte/qa": "^0.2.0",
+    "contributte/tester": "^0.1.0",
     "nepada/phpstan-nette-tester": "^0.4",
-    "ninjify/coding-standard": "^0.11",
     "php-parallel-lint/php-console-highlighter": "^0.5",
     "php-parallel-lint/php-parallel-lint": "^1.2",
+    "phpstan/extension-installer": "^1.1",
     "phpstan/phpstan": "^1.0",
     "phpstan/phpstan-deprecation-rules": "^1.0",
     "phpstan/phpstan-nette": "^1.0",
-    "phpstan/phpstan-strict-rules": "^1.0",
-    "ninjify/nunjuck": "^0.3",
-    "phpstan/extension-installer": "^1.1"
+    "phpstan/phpstan-strict-rules": "^1.0"
   },
   "autoload": {
     "psr-4": {
@@ -60,6 +60,7 @@
     "allow-plugins": {
       "dealerdirect/phpcodesniffer-composer-installer": true,
       "phpstan/extension-installer": true
-    }
+    },
+    "sort-packages": true
   }
 }

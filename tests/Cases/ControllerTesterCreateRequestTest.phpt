@@ -16,29 +16,24 @@ require __DIR__ . '/../bootstrap.php';
 class ControllerTesterCreateRequestTest extends TestCase
 {
 
-	/** @var ControllerTester */
-	private $controllerTester;
+	private ControllerTester $controllerTester;
 
-	/** @var string */
-	private $uri;
+	private string $uri;
 
 	/** @var mixed[] */
-	private $parameters = [];
+	private array $parameters = [];
 
-	/** @var string */
-	private $method;
+	private string $method;
 
-	/** @var string */
-	private $rawBody;
+	private string $rawBody;
 
 	/** @var array<string,array<string>|string> */
-	private $headers = [];
+	private array $headers = [];
 
-	/** @var string */
-	private $protocolVersion = '2.0';
+	private string $protocolVersion = '2.0';
 
 	/** @var mixed[] */
-	private $serverParams = [
+	private array $serverParams = [
 		'REMOTE_ADDR' => '127.0.0.1',
 	];
 
@@ -146,7 +141,6 @@ class ControllerTesterCreateRequestTest extends TestCase
 		Assert::same('POST', $request->getMethod());
 		Assert::same($data, $request->getParsedBody());
 	}
-
 
 	public function testRequestHeaders(): void
 	{

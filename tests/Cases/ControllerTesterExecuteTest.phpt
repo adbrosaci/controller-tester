@@ -15,8 +15,7 @@ require __DIR__ . '/../bootstrap.php';
 class ControllerTesterExecuteTest extends TestCase
 {
 
-	/** @var ControllerTester */
-	private $controllerTester;
+	private ControllerTester $controllerTester;
 
 	public function setUp(): void
 	{
