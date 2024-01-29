@@ -10,14 +10,14 @@
   "license": "MIT",
   "require": {
     "php": ">=7.4",
-    "contributte/apitte": "^0.9 | ^0.10 | ^0.11",
+    "contributte/apitte": "^0.9 | ^0.10 | ^0.11 || ^0.12",
     "nette/tester": "^2.0"
   },
   "require-dev": {
-    "contributte/qa": "^0.2.0",
-    "contributte/tester": "^0.1.0",
-    "nepada/phpstan-nette-tester": "^0.4",
-    "php-parallel-lint/php-console-highlighter": "^0.5",
+    "contributte/qa": "^0.3.0",
+    "contributte/tester": "^0.3.0",
+    "nepada/phpstan-nette-tester": "^1.1",
+    "php-parallel-lint/php-console-highlighter": "^1.0",
     "php-parallel-lint/php-parallel-lint": "^1.2",
     "phpstan/extension-installer": "^1.1",
     "phpstan/phpstan": "^1.0",
@@ -44,7 +44,7 @@
       "phpcbf --standard=.ruleset.xml"
     ],
     "phpstan": [
-      "phpstan analyse -c .phpstan.neon --xdebug"
+      "phpstan analyse -c .phpstan.neon"
     ],
     "test": [
       "tester -C tests"

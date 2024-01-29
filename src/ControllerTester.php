@@ -10,8 +10,6 @@ use Apitte\Core\Http\ApiResponse;
 use Contributte\Middlewares\Application\IApplication;
 use Contributte\Psr7\Psr7Response;
 use Contributte\Psr7\Psr7ServerRequest;
-use Exception;
-use Psr\Http\Message\ResponseInterface;
 use Throwable;
 
 class ControllerTester
@@ -44,10 +42,6 @@ class ControllerTester
 			ob_start();
 			$response = $this->middlewaresApplication->runWith($request);
 			ob_end_clean();
-
-			if (!$response instanceof ResponseInterface) {
-				throw new Exception(sprintf('Unsupported type of response: \'%s\'.', gettype($response)));
-			}
 
 			return new TestControllerResult(new ApiResponse($response));
 		}
